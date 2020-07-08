@@ -1,0 +1,38 @@
+
+/*Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.*/
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number : ");
+        int k = sc.nextInt();
+
+        int[] numbersList = {10, 15, 3, 7};
+        System.out.println(equalSum(k,numbersList));
+    }
+
+    public static boolean equalSum(int k, int[] numbersList){
+        boolean flag = false;
+        for(int i = 0; i < numbersList.length; i++){
+            if(flag)
+                break;
+            int sum = 0;
+           for(int j = 0; j < numbersList.length; j++) {
+               if(j != i){
+                   sum = numbersList[i];
+                   sum += numbersList[j];
+                   if (sum == k) {
+                       flag = true;
+                       break;
+                   }else
+                       flag = false;
+               }
+           }
+        }
+        return flag;
+    }
+}
